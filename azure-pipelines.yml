@@ -37,3 +37,12 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+    - task: SSH@0
+      displayName: Pull new image on VM and restart docker-compose
+      inputs:
+        sshEndpoint: 'cobalt demo vm'
+        runOptions: 'commands'
+        commands: 'bash update-image.sh'
+        failOnStdErr: false
+        interactiveSession: true
+        readyTimeout: '30000'
