@@ -37,9 +37,3 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-    - task: SSH@0
-      inputs:
-        sshEndpoint: 'cobalt demo vm'
-        runOptions: 'commands'
-        commands: 'uname -a'
-        readyTimeout: '20000'
